@@ -1,5 +1,7 @@
 # Dimensionality-Reduction
 
+![image](https://user-images.githubusercontent.com/52233189/187134190-312ae597-ef05-4034-b1b1-94c6a10ceff1.png)
+
 Dimensionality Reduction for Data Visualization: PCA vs TSNE vs UMAP vs LDA
 Visualising a high-dimensional dataset in 2D and 3D using: PCA, TSNE, UMAP and LDA
 What is Dimensionality Reduction?
@@ -11,4 +13,4 @@ This is known as the curse of dimensionality and the Dimensionality Reduction is
 
 Reducing the dimensionality does lose some information, however as most compressing processes it comes with some drawbacks, even though we get the training faster, we make the system perform slightly worse, but this is ok! “sometimes reducing the dimensionality can filter out some of the noise present and some of the unnecessary details”.
 
-![image](https://user-images.githubusercontent.com/52233189/187133591-19bcdaf4-4991-4e9f-bce2-425cbd52a287.png)
+
