@@ -1,0 +1,91 @@
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "term": {
+            "branches": "automotive"
+          }
+        },
+        {
+          "bool": {
+            "must": {
+              "nested": {
+                "path": "systemInfo.recoded",
+                "query": {
+                  "bool": {
+                    "must": [
+                      {
+                        "term": {
+                          "systemInfo.recoded.branch": "automotive"
+                        }
+                      },
+                      {
+                        "term": {
+                          "systemInfo.recoded.latest": "true"
+                        }
+                      },
+                      {
+                        "terms": {
+                          "systemInfo.recoded.type": [
+                            "1",
+                            "2"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "range": {
+            "publishedTimestamp": {
+              "gte": 1653948000000,
+              "lte": 1654552799000
+            }
+          }
+        }
+      ],
+      "must_not": [
+        {
+          "nested": {
+            "path": "codedItems.object",
+            "query": {
+              "bool": {
+                "filter": [
+                  {
+                    "term": {
+                      "codedItems.object.variable": "theme"
+                    }
+                  },
+                  {
+                    "term": {
+                      "codedItems.object.branch": "automotive"
+                    }
+                  },
+                  {
+                    "regexp": {
+                      "codedItems.object.label": "ArticleFlags NothingToCode( .*)?"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "track_total_hits": true,
+  "size": "10",
+  "from": "0",
+  "sort": {
+    "publishedTimestamp": {
+      "order": "desc",
+      "missing": "_last"
+    }
+  }
+}
